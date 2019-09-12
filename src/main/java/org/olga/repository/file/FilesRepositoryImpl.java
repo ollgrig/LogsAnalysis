@@ -1,7 +1,7 @@
 package org.olga.repository.file;
 
-import org.olga.exception.LogsAnalysisException;
 import org.olga.constant.LogAnalysisConstant;
+import org.olga.exception.LogsAnalysisException;
 
 import java.io.IOException;
 import java.nio.file.Files;

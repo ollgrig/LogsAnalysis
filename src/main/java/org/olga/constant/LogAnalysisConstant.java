@@ -9,7 +9,7 @@ public class LogAnalysisConstant {
     public static final String DAY_PATTERN = "yyyy-MM-dd";
     public static final String MONTH_PATTERN = "yyyy-MM";
 
-    private LogAnalysisConstant(){
+    private LogAnalysisConstant() {
         throw new IllegalArgumentException("Should not be instantiated");
     }
 }

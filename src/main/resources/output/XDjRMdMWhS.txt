@@ -1,0 +1,6 @@
+2019-02-21T00:00:00;user2;message22
+2019-02-21T00:00:00;user2;message32
+2019-02-21T00:00:00;user2;message12
+2019-02-21T00:00:00;user1;message10
+2019-02-21T00:00:00;user2;message14
+2019-02-21T00:00:00;user3;message17

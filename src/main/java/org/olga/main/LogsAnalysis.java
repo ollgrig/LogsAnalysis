@@ -9,6 +9,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static java.util.Objects.isNull;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
@@ -33,14 +35,15 @@ public class LogsAnalysis {
             String endTime = reader.readLine();
             System.out.println("Input filter parameter for custom message");//todo pattern?? Does it mean "contains"?
             String customMessage = reader.readLine();
-            if (username.isEmpty() && (startTime.isEmpty()&& endTime.isEmpty()) && customMessage.isEmpty()) {
+            if (username.isEmpty() && (startTime.isEmpty() && endTime.isEmpty()) && customMessage.isEmpty()) {
                 System.out.println("Filter parameters haven't been specified.");
                 System.exit(0);
             }
-            LocalDateTime[] timePeriod = new LocalDateTime[2];
+
+            List<LocalDateTime> timePeriod = new ArrayList<>();
             if (!startTime.isEmpty() && !endTime.isEmpty()) {
-               timePeriod[0] = LocalDateTime.parse(startTime);
-               timePeriod[1] = LocalDateTime.parse(endTime);
+                timePeriod.add(LocalDateTime.parse(startTime));
+                timePeriod.add(LocalDateTime.parse(endTime));
             }
             System.out.println("Input grouping parameter: \"username\", \"hour\", \"day\", \"month\"");
             String groupingParameter = reader.readLine();
@@ -62,7 +65,7 @@ public class LogsAnalysis {
             String outputFilename = reader.readLine();
             if (outputFilename.isEmpty()) {
                 System.out.println("path or filename haven't been specified.");
-                outputFilename  = System.getProperty(LogAnalysisConstant.USER_DIR) +
+                outputFilename = System.getProperty(LogAnalysisConstant.USER_DIR) +
                         LogAnalysisConstant.OUTPUT_DIRECTORY + randomAlphanumeric(10) + ".txt";
             }
             System.out.println("********************************************************************");

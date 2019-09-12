@@ -25,7 +25,7 @@ public class LogsServiceImpl implements LogsService {
     private LogsRepository logsRepository;
 
     @Override
-    public void printAggregateStatisticsAndWriteFilteredLogsIntoFile(String username, LocalDateTime[] timePeriod,
+    public void printAggregateStatisticsAndWriteFilteredLogsIntoFile(String username, List<LocalDateTime> timePeriod,
                                                                      String customMessage, String groupingParameterName,
                                                                      String outputFilename, int countOfThreads)
             throws LogsAnalysisException {
@@ -40,7 +40,7 @@ public class LogsServiceImpl implements LogsService {
         }
     }
 
-    private void writeFilteredLogsIntoFile(String outputFilename, int countOfThreads, String username, LocalDateTime[] timePeriod, String customMessage) throws LogsAnalysisException {
+    private void writeFilteredLogsIntoFile(String outputFilename, int countOfThreads, String username, List<LocalDateTime> timePeriod, String customMessage) throws LogsAnalysisException {
         Path out = Paths.get(outputFilename);
         try {
             Files.write(out, getLogsRepository().getLogsFromFile(countOfThreads, username, timePeriod, customMessage), Charset.defaultCharset());
@@ -49,7 +49,7 @@ public class LogsServiceImpl implements LogsService {
         }
     }
 
-    private Map<String, List<String>> groupByParameterIntoMap(String groupingParameterName, int countOfThreads, String username, LocalDateTime[] timePeriod, String customMessage) throws LogsAnalysisException {
+    private Map<String, List<String>> groupByParameterIntoMap(String groupingParameterName, int countOfThreads, String username, List<LocalDateTime> timePeriod, String customMessage) throws LogsAnalysisException {
         Function<String, String> mapper;
         switch (groupingParameterName) {
             case "username":

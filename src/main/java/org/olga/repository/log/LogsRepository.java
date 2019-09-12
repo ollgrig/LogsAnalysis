@@ -6,6 +6,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface LogsRepository {
-    List<String> getLogsFromFile(int countOfTreads, String username, LocalDateTime[] timePeriod, String customMessage) throws LogsAnalysisException;
+    List<String> getLogsFromFile(int countOfTreads, String username, List<LocalDateTime> timePeriod, String customMessage) throws LogsAnalysisException;
 
 }

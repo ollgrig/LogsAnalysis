@@ -29,7 +29,7 @@ public class LogsRepositoryImpl implements LogsRepository {
     }
 
     @Override
-    public List<String> getLogsFromFile(int countOfTreads, String username, LocalDateTime[] timePeriod, String customMessage) throws LogsAnalysisException {
+    public List<String> getLogsFromFile(int countOfTreads, String username, List<LocalDateTime> timePeriod, String customMessage) throws LogsAnalysisException {
         ExecutorService executorService = Executors.newFixedThreadPool(countOfTreads);
         try {
             List<Future<List<String>>> futureList = getFilesRepository().getPaths().stream()
