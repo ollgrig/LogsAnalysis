@@ -1,5 +1,6 @@
 package org.olga.repository.log;
 
+import org.olga.commons.DateRange;
 import org.olga.exception.LogsAnalysisException;
 import org.olga.repository.file.FilesRepository;
 import org.olga.repository.file.FilesRepositoryImpl;
@@ -29,7 +30,7 @@ public class LogsRepositoryImpl implements LogsRepository {
     }
 
     @Override
-    public List<String> getLogsFromFile(int countOfTreads, String username, List<LocalDateTime> timePeriod, String customMessage) throws LogsAnalysisException {
+    public List<String> getLogsFromFile(int countOfTreads, String username, DateRange timePeriod, String customMessage) throws LogsAnalysisException {
         ExecutorService executorService = Executors.newFixedThreadPool(countOfTreads);
         try {
             List<Future<List<String>>> futureList = getFilesRepository().getPaths().stream()

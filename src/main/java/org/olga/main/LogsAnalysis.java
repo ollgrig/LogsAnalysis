@@ -1,5 +1,6 @@
 package org.olga.main;
 
+import org.olga.commons.DateRange;
 import org.olga.constant.LogAnalysisConstant;
 import org.olga.exception.LogsAnalysisException;
 import org.olga.service.LogsService;
@@ -40,11 +41,14 @@ public class LogsAnalysis {
                 System.exit(0);
             }
 
-            List<LocalDateTime> timePeriod = new ArrayList<>();
+            DateRange timePeriod = new DateRange(startTime,endTime);
+
+            /*List<LocalDateTime> timePeriod = new ArrayList<>();
             if (!startTime.isEmpty() && !endTime.isEmpty()) {
                 timePeriod.add(LocalDateTime.parse(startTime));
                 timePeriod.add(LocalDateTime.parse(endTime));
-            }
+            }*/
+
             System.out.println("Input grouping parameter: \"username\", \"hour\", \"day\", \"month\"");
             String groupingParameter = reader.readLine();
             if (groupingParameter.isEmpty()) {

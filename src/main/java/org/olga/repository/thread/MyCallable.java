@@ -1,5 +1,6 @@
 package org.olga.repository.thread;
 
+import org.olga.commons.DateRange;
 import org.olga.exception.LogsAnalysisException;
 
 import java.io.IOException;
@@ -16,10 +17,10 @@ import static org.olga.util.LogUtils.getSplittedLog;
 public class MyCallable implements Callable<List<String>> {
     private Path path;
     private String username;
-    private List<LocalDateTime> timePeriod;
+    private DateRange timePeriod;
     private String customMessage;
 
-    public MyCallable(Path path, String username, List<LocalDateTime> timePeriod, String customMessage) {
+    public MyCallable(Path path, String username, DateRange timePeriod, String customMessage) {
         this.path = path;
         this.username = username;
         this.timePeriod = timePeriod;
@@ -31,9 +32,9 @@ public class MyCallable implements Callable<List<String>> {
         try {
             return Files.lines(path)
                     .filter(log -> {
-                        if (Objects.nonNull(timePeriod.get(0)) && Objects.nonNull(timePeriod.get(1))) {
+                        if (!timePeriod.isEmpty()) {
                             LocalDateTime dateTime = LocalDateTime.parse(getSplittedLog(log)[0]);
-                            return dateTime.isAfter(timePeriod.get(0)) && dateTime.isBefore(timePeriod.get(1));
+                            return dateTime.isAfter(timePeriod.getStartDateTime()) && dateTime.isBefore(timePeriod.getEndDateTime());
                         }
                         return true;
                     })
