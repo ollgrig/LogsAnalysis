@@ -1,11 +1,10 @@
-package commons;
+package org.olga.commons;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.olga.commons.DateRange;
 
 import java.time.LocalDateTime;
 

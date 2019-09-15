@@ -8,15 +8,13 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LogUtilsTest {
-    private static final String DEFAULT_LOG_PARTS_SEPARATOR = ";";
     private static final String DEFAULT_LOG = "log;log;log";
-    private static final String[] DEFAULT_LOG_ARRAY = new String[3];
 
     @Test
     public void shouldReturnSplittedString() {
         String[] expected = {"log", "log", "log"};
 
-        String[] result = DEFAULT_LOG.split(DEFAULT_LOG_PARTS_SEPARATOR);
+        String[] result = LogUtils.getSplittedLog(DEFAULT_LOG);
 
         assertEquals("Verify array length", expected.length, result.length);
         for (int i = 0; i < expected.length; i++) {

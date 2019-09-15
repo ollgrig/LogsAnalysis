@@ -9,9 +9,6 @@ import org.olga.service.LogsServiceImpl;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 import static java.util.Objects.isNull;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
@@ -42,12 +39,6 @@ public class LogsAnalysis {
             }
 
             DateRange timePeriod = new DateRange(startTime,endTime);
-
-            /*List<LocalDateTime> timePeriod = new ArrayList<>();
-            if (!startTime.isEmpty() && !endTime.isEmpty()) {
-                timePeriod.add(LocalDateTime.parse(startTime));
-                timePeriod.add(LocalDateTime.parse(endTime));
-            }*/
 
             System.out.println("Input grouping parameter: \"username\", \"hour\", \"day\", \"month\"");
             String groupingParameter = reader.readLine();
