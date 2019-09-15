@@ -22,7 +22,7 @@ public class DateRange {
         }
     }
     public boolean isEmpty(){
-        return Objects.isNull(startDateTime) || Objects.isNull(endDateTime);
+        return Objects.isNull(getStartDateTime()) || Objects.isNull(getEndDateTime());
     }
 
     public LocalDateTime getStartDateTime() {
